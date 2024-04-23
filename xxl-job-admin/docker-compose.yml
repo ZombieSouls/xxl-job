@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  xxl-job-admin-postgres:
+    image: xxl-job-admin-postgres:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: zombie-xxl-job-admin
+    ports:
+      - "8080:8080"
+    environment:
+      - db_url=jdbc:postgresql://192.168.6.173:5432/xxl_job?currentSchema=xxl_job
+      - db_username=zombie
+      - db_password=zombie
+#    depends_on:
+#      - db
+
+#  db:
+#    image: postgres:16.2
+#    container_name: zombie_postgres
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - E:/postgres/data:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_PASSWORD=zombie
+#      - POSTGRES_USER=zombie
