@@ -4,9 +4,9 @@
 --
 -- # 创建一个 xxl_job 用户，密码：123456
 CREATE USER xxl_job WITH PASSWORD '123456';
--- # 创建一个 xxl_job 数据库，属于 xxl_o=job 用户
+-- # 创建一个 xxl_job 数据库，属于 xxl_job 用户
 CREATE DATABASE xxl_job OWNER xxl_job;
--- # 创建一个 xxl_job SCHEMA，属于 xxl_o=job 用户
+-- # 创建一个 xxl_job SCHEMA，属于 xxl_job 用户
 CREATE SCHEMA xxl_job AUTHORIZATION xxl_job;
 -- # 将 xxl_job 数据库授权给 xxl_job 用户
 GRANT ALL PRIVILEGES ON DATABASE xxl_job TO xxl_job;
