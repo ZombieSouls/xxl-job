@@ -10,7 +10,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - db_url=jdbc:postgresql://localhost:5432/xxl_job?currentSchema=xxl_job
+      - db_url=jdbc:log4jdbc:postgresql://localhost:5432/xxl_job?currentSchema=xxl_job
       - db_username=xxl_job
       - db_password=123456
     network_mode: host
