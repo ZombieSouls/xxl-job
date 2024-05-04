@@ -8,22 +8,24 @@ services:
       dockerfile: Dockerfile
     container_name: zombie-xxl-job-admin
     ports:
-      - "8080:8080"
+      - "8888:8888"
     environment:
-      - db_url=jdbc:log4jdbc:postgresql://localhost:5432/xxl_job?currentSchema=xxl_job
+      - db_url=jdbc:log4jdbc:postgresql://host.docker.internal:5432/xxl_job?currentSchema=xxl_job
       - db_username=xxl_job
       - db_password=123456
-    network_mode: host
-#    depends_on: Published ports are discarded when using host network mode
+#   see: https://docs.docker.com/desktop/networking/#i-want-to-connect-from-a-container-to-a-service-on-the-host
+    extra_hosts:
+      - host.docker.internal:host-gateway
+#    depends_on:
 #      - db
 
-#  db:
-#    image: postgres:16.2
-#    container_name: zombie_postgres
-#    ports:
-#      - "5432:5432"
-#    volumes:
-#      - E:/postgres/data:/var/lib/postgresql/data
-#    environment:
-#      - POSTGRES_PASSWORD=xxl_job
-#      - POSTGRES_USER=123456
+  db:
+    image: postgres:16.2
+    container_name: zombie_postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - E:/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=xxl_job
+      - POSTGRES_PASSWORD=123456
